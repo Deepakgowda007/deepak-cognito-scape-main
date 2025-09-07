@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic Design System for Deepak Gowda Portfolio */
+
+@layer base {
+  :root {
+    /* Futuristic Color Palette - HSL values */
+    --space-black: 225 25% 5%;
+    --deep-blue: 225 45% 8%;
+    --cosmic-indigo: 245 55% 15%;
+    --neural-teal: 180 85% 25%;
+    --electric-blue: 217 91% 60%;
+    --cyber-cyan: 188 95% 68%;
+    --hologram-purple: 260 85% 67%;
+    --neon-green: 127 100% 82%;
+    --plasma-pink: 330 85% 75%;
+    
+    /* Semantic tokens */
+    --background: var(--space-black);
+    --foreground: 0 0% 98%;
+    --card: var(--deep-blue);
+    --card-foreground: 0 0% 95%;
+    --popover: var(--cosmic-indigo);
+    --popover-foreground: 0 0% 95%;
+    --primary: var(--electric-blue);
+    --primary-foreground: 0 0% 98%;
+    --secondary: var(--neural-teal);
+    --secondary-foreground: 0 0% 98%;
+    --muted: var(--cosmic-indigo);
+    --muted-foreground: 0 0% 70%;
+    --accent: var(--cyber-cyan);
+    --accent-foreground: var(--space-black);
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: var(--cosmic-indigo);
+    --input: var(--deep-blue);
+    --ring: var(--electric-blue);
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, 
+      hsl(var(--space-black)), 
+      hsl(var(--deep-blue)), 
+      hsl(var(--cosmic-indigo)), 
+      hsl(var(--neural-teal))
+    );
+    --gradient-neural: linear-gradient(90deg, 
+      hsl(var(--electric-blue) / 0.8), 
+      hsl(var(--cyber-cyan) / 0.8),
+      hsl(var(--hologram-purple) / 0.8)
+    );
+    --gradient-glow: radial-gradient(circle at center, 
+      hsl(var(--electric-blue) / 0.4), 
+      transparent 70%
+    );
+    
+    /* Shadows and glows */
+    --glow-electric: 0 0 20px hsl(var(--electric-blue) / 0.5);
+    --glow-cyan: 0 0 30px hsl(var(--cyber-cyan) / 0.6);
+    --glow-purple: 0 0 25px hsl(var(--hologram-purple) / 0.5);
+    --shadow-depth: 0 8px 32px hsl(var(--space-black) / 0.8);
+    --shadow-neural: inset 0 1px 0 hsl(var(--electric-blue) / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-neural: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --animation-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animation-float: float 3s ease-in-out infinite;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter overflow-x-hidden;
+    background: var(--gradient-cosmic);
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-space-grotesk;
+  }
+}
+
+@layer components {
+  /* Neural Network Animations */
+  @keyframes pulse {
+    0%, 100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(1deg); }
+    66% { transform: translateY(-5px) rotate(-1deg); }
+  }
+  
+  @keyframes neural-pulse {
+    0% { 
+      box-shadow: 0 0 0 0 hsl(var(--electric-blue) / 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 20px hsl(var(--electric-blue) / 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 hsl(var(--electric-blue) / 0);
+    }
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes brain-rotate {
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg); }
+  }
+  
+  /* Utility Classes */
+  .neural-glow {
+    box-shadow: var(--glow-electric);
+    border: 1px solid hsl(var(--electric-blue) / 0.3);
+  }
+  
+  .cyber-card {
+    @apply bg-card/80 backdrop-blur-md border border-primary/20;
+    box-shadow: var(--shadow-depth), var(--shadow-neural);
+    transition: var(--transition-neural);
+  }
+  
+  .cyber-card:hover {
+    @apply border-accent/40;
+    box-shadow: var(--glow-cyan), var(--shadow-depth);
+    transform: translateY(-4px) scale(1.02);
+  }
+  
+  .hologram-text {
+    background: var(--gradient-neural);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  .brain-3d {
+    transform-style: preserve-3d;
+    animation: brain-rotate 20s linear infinite;
+  }
+  
+  .skill-node {
+    @apply relative;
+    transition: var(--transition-neural);
+  }
+  
+  .skill-node:hover {
+    transform: scale(1.2);
+    animation: neural-pulse 1s infinite;
+  }
+  
+  .skill-node::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: hsl(var(--electric-blue) / 0.2);
+    transform: translate(-50%, -50%);
+    animation: ripple 1.5s infinite;
+    opacity: 0;
+  }
+  
+  .skill-node:hover::before {
+    opacity: 1;
+  }
+  
+  .particle-trail {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: hsl(var(--cyber-cyan));
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fade-out 1s ease-out forwards;
+  }
+  
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+  
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  .parallax-layer {
+    transform-style: preserve-3d;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+}
